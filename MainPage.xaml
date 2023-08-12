@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Styles.MainPage">
+
+
+    <!-- Applying styles to the page so we don't have to do it to every individual component of this page -->
+
+    <ContentPage.Resources>
+
+        <!-- Predefining colors to be used --><!--
+        
+        <Color x:Key="backgroundColor1">#323031</Color>
+        <Color x:Key="textColor1">#ffc857</Color>
+        
+        
+
+        --><!-- Style for the VerticalStackLayout --><!--
+        
+        <Style TargetType="VerticalStackLayout">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Spacing" Value="10"/>
+            <Setter Property="Padding" Value="30,0"/>
+        </Style>-->
+
+
+        <!-- General Style to inherit from for the buttons --><!--
+        <Style TargetType="Button" x:Key="buttonsGeneral">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        
+        --><!-- Style for the Button --><!--
+        <Style TargetType="Button" BasedOn="{StaticResource buttonsGeneral}" x:Key="buttonNormal">
+            <Setter Property="BackgroundColor" Value="{StaticResource backgroundColor1}"/>
+            <Setter Property="TextColor" Value="{StaticResource textColor1}"/>
+        </Style>
+
+        
+        --><!-- 5. Inheritance of Styles -->
+        <!-- This style will be applicable to special buttons that we want, but the general properties will be applied because it's BasedOn the general button--><!--
+        <Style  x:Key="buttonSpecial"
+                TargetType="Button" 
+               BasedOn="{StaticResource buttonsGeneral}">
+            <Setter Property="BackgroundColor" Value="Firebrick"/>
+            <Setter Property="TextColor" Value="AliceBlue"/>
+        </Style>-->
+        
+        
+        <!-- 3. Derived Types -->
+        
+        <!-- the derived StackBase is the class for all of StackLayout, VerticalStackLayout, and HorizontalStackLayout.. 
+        although it's not recommended, it is also possible to apply styles to all at once, this way. 
+        The recommended way is to apply the styles directly as above. 
+        For this to work, we have to use the ApplyToDerivedTypes property and set it to True 
+        
+         <Style TargetType="StackBase" ApplyToDerivedTypes="True">
+
+            .. styles
+        
+        </Style>-->
+        
+
+        <!-- 4. Global Styles -->
+        
+        <!-- We can also apply the styles globally by copying them to the app.xaml file wiithin the Application.Resources section. 
+        This way, the styles will be applied to the specified controls in all our pages -->
+
+
+    </ContentPage.Resources>
+
+
+    <ScrollView>
+        
+        <!-- styles can also be applied in the low level, which will be seen as priority -->
+
+        <VerticalStackLayout  Spacing="25"
+                             Padding="30,0"
+                            VerticalOptions="Center">
+
+            <!--<VerticalStackLayout.Resources>
+            <Style>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            </VerticalStackLayout.Resources>-->
+
+            <!-- 1. IMPLICIT STYLE -->
+
+            <Button
+                x:Name="loginBtn"
+                SemanticProperties.Hint=""
+                Text="Login"
+                Style="{StaticResource buttonNormal}"/>
+
+            <Button
+                x:Name="visitWebBtn"
+                SemanticProperties.Hint=""
+                Text="Visit Web"
+                Style="{StaticResource buttonNormal}"/>
+
+            <!-- 2. EXPLICIT STYLES-->
+            
+            <Button
+                x:Name="loginBtn2"
+                SemanticProperties.Hint=""
+                Text="Login"
+                Style="{StaticResource buttonSpecial}"/>
+
+            <Button
+                x:Name="visitWebBtn2"
+                SemanticProperties.Hint=""
+                Text="Visit Web"
+                Style="{StaticResource buttonSpecial}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

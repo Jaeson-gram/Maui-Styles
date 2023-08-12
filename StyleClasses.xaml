@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Styles.StyleClasses"
+             Title="StyleClasses">
+
+    <ContentPage.Resources>
+        <!-- Modify the text of a button -->
+
+        <Style TargetType="Button" Class="ButtonText">
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+
+        <!-- Modify a button to dark color -->
+
+        <Style TargetType="Button" Class="DarkButton">
+            <Setter Property="BackgroundColor" Value="Indigo"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <!-- Modify a button to light color -->
+
+        <Style TargetType="Button" Class="LightButton">
+            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        
+        <!-- Working with device light and dark modes -->
+        <Style TargetType="Label" >
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Dark=WhiteSmoke, Light=Indigo}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Label Text="Hey There! "/>
+
+        <Label Text="How Are! "/>
+        
+        <Label Text="You!?"/>
+
+        <Button 
+            Text="Welcome to .NET MAUI!" 
+            StyleClass="ButtonText, LightButton"/>
+
+        <Button 
+            Text="Welcome to .NET MAUI!" 
+            class="ButtonText, DarkButton"/>
+    </VerticalStackLayout>
+</ContentPage>

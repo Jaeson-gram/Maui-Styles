@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp complie="true" ?>
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- General Style to inherit from for the buttons -->
+    <Style TargetType="Button" x:Key="buttonsGeneral">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Medium"/>
+    </Style>
+
+    <!-- Style for the Button -->
+    <Style TargetType="Button" BasedOn="{StaticResource buttonsGeneral}" x:Key="buttonNormal">
+        <Setter Property="BackgroundColor" Value="{StaticResource backgroundColor1}"/>
+        <Setter Property="TextColor" Value="{StaticResource textColor1}"/>
+    </Style>
+
+
+    <!-- 5. Inheritance of Styles -->
+    <!-- This style will be applicable to special buttons that we want, but the general properties will be applied because it's BasedOn the general button-->
+    <Style  x:Key="buttonSpecial"
+                TargetType="Button" 
+               BasedOn="{StaticResource buttonsGeneral}">
+        <Setter Property="BackgroundColor" Value="Firebrick"/>
+        <Setter Property="TextColor" Value="AliceBlue"/>
+    </Style>
+
+</ResourceDictionary>
